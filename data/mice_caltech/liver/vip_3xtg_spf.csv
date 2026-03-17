@@ -1,0 +1,93 @@
+ID,VIP,GroupContrib,mz,RT,SpectrumID,Compound_Name,NPC#pathway,NPC#superclass,NPC#class,EffectSize,LowerLimitCI,UpperLimitCI
+9922,3.28,WT,546.3544,5.1583,CCMSLIB00010066644,PC(20:3),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.7294,-0.8901,-0.4072
+9831,3.10,WT,494.3234,4.8119,CCMSLIB00010055762,PC(16:1),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.6824,-0.8258,-0.4559
+325,2.97,Mut,188.1755,0.2208,CCMSLIB00012715944,spermidine-C2:0,Alkaloids,Ornithine alkaloids,Polyamines,0.6613,0.4259,0.8129
+9318,2.93,Mut,300.2893,4.5926,CCMSLIB00003136887,erythro-c18-sphingosine,Fatty acids,Sphingolipids,Sphingoid bases,0.6353,0.4094,0.7878
+10040,2.81,Mut,482.3598,5.2690,CCMSLIB00003138765,1-hexadecyl-sn-glycero-3-phosphocholine,Fatty acids,Glycerophospholipids,Glycerophosphocholines,0.6151,0.3450,0.7911
+10193,2.81,Mut,409.3057,5.3846,CCMSLIB00012718059,glutamine-C18:2,Fatty acids,Fatty amides,N-acyl amines,0.6244,0.3799,0.7873
+9300,2.79,WT,468.3079,4.6686,CCMSLIB00003139823,1-myristoyl-sn-glycero-3-phosphocholine,Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.6252,-0.7945,-0.3657
+1440,2.77,Mut,384.1143,0.7261,CCMSLIB00005467722,succinoadenosine,Carbohydrates,Nucleosides,Purine nucleos(t)ides,0.5782,0.3272,0.7529
+9726,2.76,Mut,448.3415,4.9434,CCMSLIB00006581927,arachidonoylcarnitine,Alkaloids,Ornithine alkaloids,Polyamines,0.5429,0.2649,0.7375
+9836,2.69,WT,508.3392,5.0456,CCMSLIB00010083916,PC(17:1),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.6437,-0.8192,-0.3581
+2922,2.65,Mut,180.0653,1.8004,CCMSLIB00005883437,hippurate,Amino acids and Peptides,Small peptides,Aminoacids,0.5479,0.2844,0.7344
+9689,2.59,WT,522.3453,4.9455,CCMSLIB00003136940,1-octadecenoyl-sn-glycero-3-phosphocholine,Fatty acids,Sphingolipids,Phosphosphingolipids,-0.6555,-0.8239,-0.3805
+9486,2.58,WT,518.3237,4.7679,CCMSLIB00010091589,PC(18:3),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.6420,-0.8116,-0.3727
+267,2.58,Mut,203.2229,0.2146,CCMSLIB00005884402,spermine,Alkaloids,Ornithine alkaloids,Polyamines,0.6067,0.3581,0.7750
+9965,2.53,WT,520.3391,4.9731,CCMSLIB00010076324,PC(18:2),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.5983,-0.7796,-0.3245
+9889,2.44,Mut,476.2741,5.1136,CCMSLIB00003137091,1-palmitoyl-2-hydroxy-sn-glycero-3-phosphoethanolamine,Fatty acids,Glycerophospholipids,Glycerophosphoethanolamines,0.5008,0.2379,0.6954
+11797,2.35,Mut,442.3313,6.4677,CCMSLIB00010011050,leu-C22:6,Fatty acids,Fatty amides,N-acyl amines,0.4622,0.2205,0.6504
+628,2.32,WT,258.1097,0.2799,CCMSLIB00006679241,sn-glycero-3-phosphocholine,Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.5059,-0.6989,-0.2442
+2769,2.30,Mut,246.1696,1.7041,CCMSLIB00005885056,isovalerylcarnitine,Fatty acids,Fatty esters,Fatty acyl carnitines,0.5109,0.2446,0.7056
+10564,2.29,Mut,504.3053,5.6276,CCMSLIB00003136028,1-eicosatrienoyl-sn-glycero-3-phosphoethanolamine,Fatty acids,Glycerophospholipids,Glycerophosphoethanolamines,0.4983,0.2387,0.6915
+629,2.24,Mut,118.0864,0.2816,CCMSLIB00005883853,valine,Amino acids and Peptides,Small peptides,Aminoacids,0.4639,0.1938,0.6686
+1655,2.18,WT,114.0916,1.0424,CCMSLIB00003137149,6-aminocaproic acid,Alkaloids,Lysine alkaloids,Piperidine alkaloids,-0.4370,-0.6480,-0.1636
+2514,2.15,WT,299.0803,1.5584,CCMSLIB00012444456,5'-methylthioinosine,Carbohydrates,Nucleosides,Purine nucleos(t)ides,-0.3597,-0.5457,-0.1399
+911,2.11,Mut,104.1073,0.2517,CCMSLIB00005884704,4-aminobutanoate,Alkaloids,Fatty acyls,Fatty alcohols,0.4588,0.1854,0.6663
+9951,2.07,WT,568.3389,4.9820,CCMSLIB00010079074,PC(22:6),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.5294,-0.7196,-0.2652
+10889,2.05,Mut,538.3862,5.9684,CCMSLIB00010056995,PC(19:0),Fatty acids,Glycerophospholipids,Glycerophosphocholines,0.4773,0.2491,0.6553
+616,2.02,Mut,147.0763,0.2795,CCMSLIB00006682241,glutamine,Amino acids and Peptides,Small peptides,Aminoacids,0.4286,0.1778,0.6271
+11322,2.02,Mut,300.2894,6.0787,CCMSLIB00003138556,palmitoyl ethanolamide,Fatty acids,Fatty amides,N-acyl ethanolamines (endocannabinoids),0.4824,0.2109,0.6848
+2636,1.96,WT,360.1492,1.5608,CCMSLIB00003139362,lactulose,Fatty acids,Aminosugars and aminoglycosides,Aminosugars,-0.4521,-0.6631,-0.1746
+10131,1.96,WT,548.3702,5.4209,CCMSLIB00010096583,PC(20:2),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.4874,-0.6877,-0.2181
+9982,1.95,WT,522.3547,5.2796,CCMSLIB00010066649,PC(18:1),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.5529,-0.7411,-0.2842
+738,1.94,Mut,150.0583,0.3287,CCMSLIB00005884997,methionine,Amino acids and Peptides,Small peptides,Aminoacids,0.4403,0.1718,0.6480
+10415,1.93,WT,536.3703,5.5240,CCMSLIB00010094317,PC(19:1),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.4412,-0.6440,-0.1803
+10146,1.91,WT,572.3701,5.3562,CCMSLIB00010101053,PC(22:4),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.4176,-0.6205,-0.1625
+6141,1.90,Mut,464.2052,2.6140,CCMSLIB00003138983,4-hydroxynonenal glutathione,Amino acids and Peptides,Small peptides,Dipeptides,0.3983,0.1282,0.6134
+951,1.86,Mut,184.0603,0.4126,CCMSLIB00005464269,4-pyridoxate,Alkaloids,Nicotinic acid alkaloids,Pyridine alkaloids,0.4756,0.2067,0.6778
+10449,1.84,Mut,482.3235,5.6266,CCMSLIB00010101705,PE(18:0),Fatty acids,Glycerophospholipids,Glycerophosphoethanolamines,0.4286,0.1489,0.6448
+10810,1.83,Mut,324.2893,5.8248,CCMSLIB00003137120,linoleoyl ethanolamide,Fatty acids,Fatty amides,N-acyl ethanolamines (endocannabinoids),0.4958,0.2255,0.6952
+10593,1.80,Mut,368.2791,5.6203,CCMSLIB00012717564,serine-C18:2,Fatty acids,Eicosanoids,Hydroxy-hydroperoxyeicosatrienoic acids,0.3487,0.0833,0.5680
+2392,1.79,WT,198.0971,1.3058,CCMSLIB00003134887,fructose,Carbohydrates,Aminosugars and aminoglycosides,Aminosugars,-0.3899,-0.6091,-0.1155
+10244,1.78,WT,568.3372,5.2317,CCMSLIB00010056599,PC(22:6),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.3798,-0.6006,-0.1053
+601,1.78,Mut,132.1019,0.3613,CCMSLIB00005884648,norleucine,Amino acids and Peptides,Small peptides,Aminoacids,0.4101,0.1354,0.6262
+10490,1.75,Mut,385.3056,5.5782,CCMSLIB00010010751,gln-C16:0,Fatty acids,Fatty amides,N-acyl amines,0.3580,0.0851,0.5809
+252,1.71,Mut,146.1651,0.2134,CCMSLIB00012361980,spermidine,Alkaloids,Lysine alkaloids,Piperidine alkaloids,0.3765,0.0972,0.6008
+11904,1.66,WT,418.3314,6.5250,CCMSLIB00012718109,leucine-C20:4,Fatty acids,Fatty amides,N-acyl amines,-0.3076,-0.4894,-0.1000
+2034,1.63,WT,428.0358,1.1232,CCMSLIB00003134587,adenosine 5'-diphosphate,Carbohydrates,Nucleosides,Purine nucleos(t)ides,-0.2462,-0.4979,0.0437
+1239,1.61,Mut,242.0995,0.5769,CCMSLIB00010102920,pantothenic acid,Fatty acids,Fatty amides,N-acyl amines,0.3277,0.0530,0.5563
+593,1.55,Mut,613.1581,0.3394,CCMSLIB00005724008,oxidized glutathione,Amino acids and Peptides,Small peptides,Tripeptides,0.4134,0.1344,0.6317
+10580,1.53,WT,570.2817,5.4865,CCMSLIB00010089725,PS(22:6),Fatty acids,Glycerophospholipids,Glycerophosphoserines,-0.3084,-0.5343,-0.0414
+9253,1.50,WT,409.3419,4.5515,CCMSLIB00012718062,lysine-C18:2,Fatty acids,Fatty amides,N-acyl amines,-0.3008,-0.4868,-0.0887
+2005,1.49,WT,163.0599,1.0935,CCMSLIB00003138494,mannose,Carbohydrates,Saccharides,Monosaccharides,-0.3378,-0.5548,-0.0778
+9565,1.48,WT,452.2765,4.7810,CCMSLIB00010086490,PE(16:1),Fatty acids,Glycerophospholipids,Glycerophosphoethanolamines,-0.3513,-0.5635,-0.0956
+8804,1.48,WT,316.2478,3.8205,CCMSLIB00006682907,decanoylcarnitine,Fatty acids,Fatty esters,Fatty acyl carnitines,-0.2437,-0.3797,-0.0974
+1129,1.48,Mut,209.0918,0.5083,CCMSLIB00006679136,kynurenine,Amino acids and Peptides,Small peptides,Aminoacids,0.2924,0.0144,0.5285
+9678,1.47,WT,482.3234,4.9040,CCMSLIB00003137411,1-pentadecanoyl-sn-glycero-3-phosphocholine,Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.3647,-0.5897,-0.0872
+2475,1.45,WT,608.0872,1.3741,CCMSLIB00006680133,uridine 5'-diphospho-n-acetylglucosamine,Carbohydrates,Aminosugars and aminoglycosides,Aminosugars,-0.2261,-0.4089,-0.0257
+10510,1.43,Mut,295.2264,5.5417,CCMSLIB00003134668,"13-keto-9z,11e-octadecadienoic acid",Fatty acids,Fatty Acids and Conjugates,Oxo fatty acids,0.2941,0.0180,0.5286
+11590,1.43,Mut,526.3137,6.2590,CCMSLIB00010097413,PS(18:0),Fatty acids,Glycerophospholipids,Glycerophosphoserines,0.3008,0.0175,0.5394
+1856,1.41,Mut,205.0970,1.0218,CCMSLIB00000222459,tryptophan,Amino acids and Peptides,Small peptides,Aminoacids,0.3109,0.0276,0.5480
+9428,1.39,Mut,394.3060,4.6783,CCMSLIB00010010754,his-C16:0,Fatty acids,Fatty amides,N-acyl amines,0.3328,0.0766,0.5477
+12299,1.38,Mut,404.3156,6.7737,CCMSLIB00012718021,phenylalanine-C16:0,Fatty acids,Fatty amides,N-acyl amines,0.2857,0.0198,0.5139
+9125,1.37,Mut,616.1755,4.4347,CCMSLIB00003139157,hemin cation,Shikimates and Phenylpropanoids,Terphenyls,p-Terphenyls,0.3000,0.0316,0.5281
+10117,1.36,Mut,279.2317,5.3330,CCMSLIB00003134812,9(10)-epome,Fatty acids,Fatty Acids and Conjugates,Unsaturated fatty acids,0.2403,-0.0303,0.4781
+9032,1.34,WT,344.2790,4.2687,CCMSLIB00005884390,lauroylcarnitine,Fatty acids,Fatty esters,Fatty acyl carnitines,-0.2193,-0.4136,-0.0060
+9713,1.34,WT,542.3226,4.7913,CCMSLIB00010067534,PC(20:5),Fatty acids,Sphingolipids,Phosphosphingolipids,-0.3832,-0.6003,-0.1135
+892,1.33,WT,218.1384,0.3999,CCMSLIB00005885043,propionylcarnitine,Fatty acids,Fatty esters,Fatty acyl carnitines,-0.1899,-0.4300,0.0753
+9956,1.29,WT,544.3390,4.9891,CCMSLIB00010081764,PC(20:4),Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.4084,-0.6131,-0.1523
+10894,1.27,Mut,338.2685,5.8860,CCMSLIB00010010949,gly-C18:2,Fatty acids,Fatty amides,N-acyl amines,0.3008,0.0352,0.5268
+760,1.26,Mut,290.1343,0.3353,CCMSLIB00006684617,ophthalmic acid,Amino acids and Peptides,Small peptides,Tripeptides,0.2983,0.0981,0.4753
+1475,1.24,WT,229.1544,0.7346,CCMSLIB00003138780,ile-pro,Amino acids and Peptides,Small peptides,Dipeptides,-0.2336,-0.4775,0.0437
+3583,1.24,WT,263.1388,2.2166,CCMSLIB00003140141,phe-pro,Amino acids and Peptides,Small peptides,Dipeptides,-0.2689,-0.4934,-0.0108
+1135,1.19,WT,237.0866,0.5094,CCMSLIB00006126861,formylkynurenine,Amino acids and Peptides,Small peptides,Aminoacids,-0.2706,-0.5062,0.0025
+396,1.19,Mut,133.0971,0.2343,CCMSLIB00000577961,ornithine,Amino acids and Peptides,Small peptides,Aminoacids,0.4151,0.1434,0.6287
+857,1.19,Mut,156.0767,0.2627,CCMSLIB00005884161,histidine,Amino acids and Peptides,Small peptides,Aminoacids,0.4000,0.1230,0.6192
+11906,1.18,Mut,428.3158,6.5332,CCMSLIB00012718158,phenylalanine-C18:2,Fatty acids,Fatty amides,N-acyl amines,0.3345,0.0496,0.5690
+1309,1.16,Mut,232.1540,0.6175,CCMSLIB00005885049,butyrylcarnitine,Fatty acids,Fatty esters,Fatty acyl carnitines,0.2639,-0.0184,0.5072
+1012,1.16,Mut,204.0865,0.3608,CCMSLIB00012716138,aminoadipic acid-C2:0,Carbohydrates,Aminosugars and aminoglycosides,Aminosugars,0.2807,-0.0030,0.5226
+10896,1.15,Mut,496.3392,5.8412,CCMSLIB00003140032,Lyso-PC(16:0),Fatty acids,Glycerophospholipids,Glycerophosphoethanolamines,0.2571,-0.0110,0.4908
+9314,1.15,WT,457.3416,4.5950,CCMSLIB00010011051,lys-C22:6,Terpenoids,Steroids,Steroidal alkaloids,-0.2218,-0.4514,0.0352
+1037,1.13,WT,308.0905,0.3767,CCMSLIB00005884540,glutathione,Amino acids and Peptides,Small peptides,Tripeptides,-0.1370,-0.3008,0.0347
+11647,1.12,WT,380.3155,6.3774,CCMSLIB00012717711,valine-c18:2,Fatty acids,Fatty amides,N-acyl amines,-0.2798,-0.4863,-0.0438
+1221,1.11,WT,189.1231,0.5743,CCMSLIB00003135511,gly-leu,Amino acids and Peptides,Small peptides,Dipeptides,-0.2168,-0.4654,0.0635
+11459,1.11,WT,446.3262,6.2608,CCMSLIB00012718325,tyrosine-C18:1,Fatty acids,Fatty amides,N-acyl amines,-0.2168,-0.4533,0.0483
+10890,1.10,WT,362.2686,5.8701,CCMSLIB00012717549,glycine-C20:4,Fatty acids,Fatty amides,N-acyl amines,-0.2319,-0.4797,0.0501
+10736,1.10,WT,382.2947,5.7713,CCMSLIB00010010958,thr-C18:2,Fatty acids,Fatty amides,N-acyl amines,-0.2714,-0.4716,-0.0447
+10701,1.09,Mut,411.3213,5.7392,CCMSLIB00010010922,gln-C18:1,Fatty acids,Fatty amides,N-acyl amines,0.2403,-0.0375,0.4837
+1149,1.06,Mut,464.0807,0.4831,CCMSLIB00003136665,adenylosuccinic acid,Carbohydrates,Nucleosides,Purine nucleos(t)ides,0.2000,-0.0769,0.4482
+5373,1.04,Mut,302.2074,2.4298,CCMSLIB00003140175,leu-gly-leu,Amino acids and Peptides,Small peptides,Tripeptides,0.1933,-0.0904,0.4480
+10139,1.04,WT,510.3547,5.4002,CCMSLIB00003139206,1-heptadecanoyl-sn-glycero-3-phosphocholine,Fatty acids,Glycerophospholipids,Glycerophosphocholines,-0.2622,-0.4992,0.0113
+2587,1.03,WT,522.2013,1.5403,CCMSLIB00012307412,melezitose,Carbohydrates,Saccharides,Disaccharides,-0.1782,-0.4204,0.0878
+10357,1.01,Mut,428.3729,5.4884,CCMSLIB00005738771,stearoylcarnitine,Fatty acids,Fatty esters,Fatty acyl carnitines,0.2471,-0.0198,0.4810
+1330,1.01,WT,123.0554,0.4746,CCMSLIB00006120400,nicotinamide,Alkaloids,Nicotinic acid alkaloids,Pyridine alkaloids,-0.2134,-0.4517,0.0533

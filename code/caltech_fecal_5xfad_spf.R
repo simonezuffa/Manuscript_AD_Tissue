@@ -1,4 +1,4 @@
-setwd("~/OneDrive - University of California, San Diego Health/Projects/Caltech/Manuscript_AD_Tissue")
+setwd("~/Desktop/Manuscript_AD_Tissue")
 
 library(tidyverse)
 library(mixOmics)
@@ -269,7 +269,7 @@ PCA_raw_plot <- PCA_raw_scores %>%
         axis.text = element_text(size = 4)) + coord_fixed()
 
 # RCLR transformation
-data_sample_clr <- decostand(data_sample %>% column_to_rownames("SampleID"), method = "rclr")
+data_sample_clr <- decostand(data_sample %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA
 PCA_whole <- mixOmics::pca(data_sample_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -319,7 +319,7 @@ data_sacrifice <- data_sample %>%
   dplyr::filter(SampleID %in% sample_sac$SampleID)
 
 # RCLR transformation
-data_sacrifice_clr <- decostand(data_sacrifice %>% column_to_rownames("SampleID"), method = "rclr")
+data_sacrifice_clr <- decostand(data_sacrifice %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA
 PCA_whole <- mixOmics::pca(data_sacrifice_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -391,7 +391,7 @@ PLSDA_strain_plot <- PLSDA_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_strain <- plotLoadings(PLSDA_strain, plot = FALSE, contrib = "max") %>%
+Loadings_strain <- plotLoadings(PLSDA_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_strain <- perf(PLSDA_strain, validation = "Mfold", folds = 4, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -421,7 +421,7 @@ PLSDA_sex_plot <- PLSDA_sex_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_sex <- plotLoadings(PLSDA_sex, plot = FALSE, contrib = "max") %>%
+Loadings_sex <- plotLoadings(PLSDA_sex, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_sex <- perf(PLSDA_sex, validation = "Mfold", folds = 4, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -454,10 +454,10 @@ data_sac_female <- data_sacrifice %>%
   dplyr::filter(SampleID %in% sample_female$SampleID)
 
 # RCLR transformation
-data_sac_het_clr <- decostand(data_sac_het %>% column_to_rownames("SampleID"), method = "rclr")
-data_sac_wt_clr <- decostand(data_sac_wt %>% column_to_rownames("SampleID"), method = "rclr")
-data_sac_male_clr <- decostand(data_sac_male %>% column_to_rownames("SampleID"), method = "rclr")
-data_sac_female_clr <- decostand(data_sac_female %>% column_to_rownames("SampleID"), method = "rclr")
+data_sac_het_clr <- decostand(data_sac_het %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
+data_sac_wt_clr <- decostand(data_sac_wt %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
+data_sac_male_clr <- decostand(data_sac_male %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
+data_sac_female_clr <- decostand(data_sac_female %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA
 PCA_sac_het <- mixOmics::pca(data_sac_het_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -565,7 +565,7 @@ PLSDA_sac_het_plot <- PLSDA_sac_het_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_sac_het <- plotLoadings(PLSDA_sac_het, plot = FALSE, contrib = "max") %>%
+Loadings_sac_het <- plotLoadings(PLSDA_sac_het, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_sac_het <- perf(PLSDA_sac_het, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -581,7 +581,7 @@ PLSDA_sac_wt_plot <- PLSDA_sac_wt_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_sac_wt <- plotLoadings(PLSDA_sac_wt, plot = FALSE, contrib = "max") %>%
+Loadings_sac_wt <- plotLoadings(PLSDA_sac_wt, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_sac_wt <- perf(PLSDA_sac_wt, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -597,7 +597,7 @@ PLSDA_sac_male_plot <- PLSDA_sac_male_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_sac_male <- plotLoadings(PLSDA_sac_male, plot = FALSE, contrib = "max") %>%
+Loadings_sac_male <- plotLoadings(PLSDA_sac_male, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_sac_male <- perf(PLSDA_sac_male, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -613,7 +613,7 @@ PLSDA_sac_female_plot <- PLSDA_sac_female_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_sac_female <- plotLoadings(PLSDA_sac_female, plot = FALSE, contrib = "max") %>%
+Loadings_sac_female <- plotLoadings(PLSDA_sac_female, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_sac_female <- perf(PLSDA_sac_female, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -806,7 +806,7 @@ meta_long_5xfad_plot <- metadata_longitudinal %>%
 
 
 # RCLR transformation
-data_longitudinal_clr <- decostand(data_longitudinal %>% column_to_rownames("SampleID"), method = "rclr")
+data_longitudinal_clr <- decostand(data_longitudinal %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA
 PCA_whole <- mixOmics::pca(data_longitudinal_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),

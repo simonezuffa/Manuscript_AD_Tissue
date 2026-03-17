@@ -1,4 +1,4 @@
-setwd("~/OneDrive - University of California, San Diego Health/Projects/Caltech/Manuscript_AD_Tissue")
+setwd("~/Desktop/Manuscript_AD_Tissue")
 
 library(tidyverse)
 library(mixOmics)
@@ -276,7 +276,7 @@ PCA_raw_plot <- PCA_raw_scores %>%
 # More variance within the 3xTG samples
 
 # RCLR transformation
-data_sample_clr <- decostand(data_sample %>% column_to_rownames("SampleID"), method = "rclr")
+data_sample_clr <- decostand(data_sample %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA
 PCA_whole <- mixOmics::pca(data_sample_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -332,7 +332,7 @@ sample_female <- metadata_metabolomics %>% dplyr::filter(sex == "female")
 data_3xtg <- data_sample %>% dplyr::filter(SampleID %in% sample_3xtg$SampleID)
 
 # RCLR transformation
-data_3xtg_clr <- decostand(data_3xtg %>% column_to_rownames("SampleID"), method = "rclr")
+data_3xtg_clr <- decostand(data_3xtg %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA
 PCA_whole <- mixOmics::pca(data_3xtg_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -384,7 +384,7 @@ PLSDA_3xtg_strain_plot <- PLSDA_3xtg_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_strain <- plotLoadings(PLSDA_3xtg_strain, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_strain <- plotLoadings(PLSDA_3xtg_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_strain <- perf(PLSDA_3xtg_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -414,7 +414,7 @@ PLSDA_3xtg_colonized_plot <- PLSDA_3xtg_colonized_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_colonized <- plotLoadings(PLSDA_3xtg_colonized, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_colonized <- plotLoadings(PLSDA_3xtg_colonized, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_colonized <- perf(PLSDA_3xtg_colonized, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -444,7 +444,7 @@ PLSDA_3xtg_sex_plot <- PLSDA_3xtg_sex_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_sex <- plotLoadings(PLSDA_3xtg_sex, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_sex <- plotLoadings(PLSDA_3xtg_sex, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_sex <- perf(PLSDA_3xtg_sex, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -483,8 +483,8 @@ data_3xtg_spf <- data_sample %>% dplyr::filter(SampleID %in% sample_3xtg$SampleI
   dplyr::filter(SampleID %in% sample_spf$SampleID)
 
 # RCLR transformation
-data_3xtg_gf_clr <- decostand(data_3xtg_gf %>% column_to_rownames("SampleID"), method = "rclr")
-data_3xtg_spf_clr <- decostand(data_3xtg_spf %>% column_to_rownames("SampleID"), method = "rclr")
+data_3xtg_gf_clr <- decostand(data_3xtg_gf %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
+data_3xtg_spf_clr <- decostand(data_3xtg_spf %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA GF
 PCA_3xtg_gf <- mixOmics::pca(data_3xtg_gf_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -557,7 +557,7 @@ PLSDA_3xtg_gf_strain_plot <- PLSDA_3xtg_gf_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_gf_strain <- plotLoadings(PLSDA_3xtg_gf_strain, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_gf_strain <- plotLoadings(PLSDA_3xtg_gf_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_gf_strain <- perf(PLSDA_3xtg_gf_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -587,7 +587,7 @@ PLSDA_3xtg_spf_strain_plot <- PLSDA_3xtg_spf_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_spf_strain <- plotLoadings(PLSDA_3xtg_spf_strain, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_spf_strain <- plotLoadings(PLSDA_3xtg_spf_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_spf_strain <- perf(PLSDA_3xtg_spf_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -652,8 +652,8 @@ data_3xtg_wt <- data_sample %>% dplyr::filter(SampleID %in% sample_3xtg$SampleID
   dplyr::filter(SampleID %in% sample_wt$SampleID)
 
 # RCLR transformation
-data_3xtg_mut_clr <- decostand(data_3xtg_mut %>% column_to_rownames("SampleID"), method = "rclr")
-data_3xtg_wt_clr <- decostand(data_3xtg_wt %>% column_to_rownames("SampleID"), method = "rclr")
+data_3xtg_mut_clr <- decostand(data_3xtg_mut %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
+data_3xtg_wt_clr <- decostand(data_3xtg_wt %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA Mut
 PCA_3xtg_mut <- mixOmics::pca(data_3xtg_mut_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -726,7 +726,7 @@ PLSDA_3xtg_mut_colo_plot <- PLSDA_3xtg_mut_colo_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_mut_strain <- plotLoadings(PLSDA_3xtg_mut_colo, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_mut_strain <- plotLoadings(PLSDA_3xtg_mut_colo, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_mut_colonization <- perf(PLSDA_3xtg_mut_colo, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -756,7 +756,7 @@ PLSDA_3xtg_wt_colo_plot <- PLSDA_3xtg_wt_colo_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_wt_strain <- plotLoadings(PLSDA_3xtg_wt_colo, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_wt_strain <- plotLoadings(PLSDA_3xtg_wt_colo, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_wt_colonization <- perf(PLSDA_3xtg_wt_colo, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -817,8 +817,8 @@ data_3xtg_female <- data_sample %>% dplyr::filter(SampleID %in% sample_3xtg$Samp
   dplyr::filter(SampleID %in% sample_female$SampleID)
 
 # RCLR transformation
-data_3xtg_male_clr <- decostand(data_3xtg_male %>% column_to_rownames("SampleID"), method = "rclr")
-data_3xtg_female_clr <- decostand(data_3xtg_female %>% column_to_rownames("SampleID"), method = "rclr")
+data_3xtg_male_clr <- decostand(data_3xtg_male %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
+data_3xtg_female_clr <- decostand(data_3xtg_female %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA Male
 PCA_3xtg_male <- mixOmics::pca(data_3xtg_male_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -891,7 +891,7 @@ PLSDA_3xtg_male_strain_plot <- PLSDA_3xtg_male_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_male_strain <- plotLoadings(PLSDA_3xtg_male_strain, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_male_strain <- plotLoadings(PLSDA_3xtg_male_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_male_strain <- perf(PLSDA_3xtg_male_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -921,7 +921,7 @@ PLSDA_3xtg_male_colo_plot <- PLSDA_3xtg_male_colo_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_male_colo <- plotLoadings(PLSDA_3xtg_male_colo, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_male_colo <- plotLoadings(PLSDA_3xtg_male_colo, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_male_colo <- perf(PLSDA_3xtg_male_colo, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -951,7 +951,7 @@ PLSDA_3xtg_female_strain_plot <- PLSDA_3xtg_female_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_female_strain <- plotLoadings(PLSDA_3xtg_female_strain, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_female_strain <- plotLoadings(PLSDA_3xtg_female_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_female_strain <- perf(PLSDA_3xtg_female_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -981,7 +981,7 @@ PLSDA_3xtg_female_colo_plot <- PLSDA_3xtg_female_colo_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_3xtg_female_colo <- plotLoadings(PLSDA_3xtg_female_colo, plot = FALSE, contrib = "max") %>%
+Loadings_3xtg_female_colo <- plotLoadings(PLSDA_3xtg_female_colo, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_3xtg_female_colo <- perf(PLSDA_3xtg_female_colo, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -1347,13 +1347,123 @@ ba_microb <- ggarrange(plot1, plot2, plot3, nrow = 1)
 #ggsave(plot = ba_microb, filename = "bile_cecum_microb.svg", device = "svg", dpi = "retina", height = 2, width = 4)
 
 
+
+
+
+# Generate clean differential figure
+VIPs_3xtg_spf_strain_Load_filter <- VIPs_3xtg_spf_strain_Load %>%
+  dplyr::filter(!(is.na(SpectrumID))) %>%
+  dplyr::mutate(Compound_Name = gsub("Spectral Match to ", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub(" from NIST14", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub(" - 20.00 eV", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub(" - 40.0 eV", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub(" - 30.0 eV", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub(" - 20.0 eV", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub(" - 50.0 eV", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub(" - 40.00 eV", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub(" - 70.0 eV", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub(" - 30.00 eV", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub("D-", "", Compound_Name)) %>%
+  dplyr::mutate(Compound_Name = gsub("L-", "", Compound_Name)) %>%
+  dplyr::filter(!str_detect(pattern = "bile acid", Compound_Name)) %>%
+  dplyr::filter(!str_detect(pattern = "cholic", Compound_Name))
+
+data_3xtg_vip_spf_filter <- data_sample_clr %>% rownames_to_column("SampleID") %>%
+  dplyr::filter(SampleID %in% sample_3xtg$SampleID) %>%
+  dplyr::select("SampleID", VIPs_3xtg_spf_strain_Load$ID) %>%
+  left_join(metadata_metabolomics)%>%
+  dplyr::filter(Colonized == "SPF")
+
+library(effsize)
+
+features_of_interest <- VIPs_3xtg_spf_strain_Load_filter$ID
+data_3xtg_vip_spf_filter$mouse_strain <- as.factor(data_3xtg_vip_spf_filter$mouse_strain)
+
+results_list <- list()
+
+# Loop through each feature to calculate effect size
+for (feature in features_of_interest) {
+  
+  if (feature %in% colnames(data_3xtg_vip_spf_filter)) {
+    
+    cd_calc <- cliff.delta(data_3xtg_vip_spf_filter[[feature]] ~ mouse_strain, 
+                           data = data_3xtg_vip_spf_filter)
+    
+    results_list[[feature]] <- data.frame(
+      FeatureID = feature,
+      EffectSize = cd_calc$estimate,
+      LowerLimitCI = cd_calc$conf.int[1],
+      UpperLimitCI = cd_calc$conf.int[2],
+      stringsAsFactors = FALSE
+    )
+    
+  } else {
+    message(paste("Warning: Feature", feature, "not found in the dataset."))
+  }
+}
+
+cliffs_delta_results <- do.call(rbind, results_list)
+rownames(cliffs_delta_results) <- NULL
+
+# Combine VIP table and eff size table
+VIPs_3xtg_cecum_eff <- VIPs_3xtg_spf_strain_Load_filter %>%
+  left_join(cliffs_delta_results, by = c("ID" = "FeatureID")) %>%
+  dplyr::mutate(Compound_Name = tolower(Compound_Name))
+
+write_csv(x = VIPs_3xtg_cecum_eff, file = "data/mice_caltech/cecal/vip_3xtg_spf.csv")
+
+# Read cleaned and manually inspected file 
+VIPs_3xtg_cecum_eff_final <- read_csv("data/mice_caltech/cecal/vip_3xtg_spf_manual.csv") %>%
+  dplyr::filter(!is.na(ID)) %>% group_by(Category) %>% arrange(Category, desc(VIP)) %>%
+  dplyr::mutate(VIP_group = case_when(GroupContrib == "WT" ~ VIP*(-1), TRUE ~ VIP))
+
+library(tidytext)
+library(patchwork)
+
+df_prepared <- VIPs_3xtg_cecum_eff_final %>%
+  dplyr::mutate(Compound_Name = reorder_within(Compound_Name, VIP_group, Category))
+
+# VIP Plot
+p_vip <- ggplot(df_prepared, aes(x = Compound_Name, y = VIP_group, color = Category)) +
+  geom_segment(aes(xend = Compound_Name, yend = 0), color = "grey", size = 0.2) +
+  geom_point(size = 1) + scale_x_reordered() + coord_flip() +
+  facet_grid(Category ~ ., scales = "free_y", space = "free_y") +
+  theme_minimal(base_size = 6) + labs(title = "VIP Scores", x = "Metabolite", y = "VIP") +
+  scale_color_viridis_d() +
+  theme(legend.position = "none", strip.background = element_blank(),
+        strip.text.y = element_blank(), axis.text.y = element_text(size = 6),
+        panel.grid.minor = element_blank())
+
+# Effect Size Plot
+p_forest <- ggplot(df_prepared, aes(x = Compound_Name, y = EffectSize, color = Category)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "darkgrey", size = 0.3) +
+  geom_pointrange(aes(ymin = LowerLimitCI, ymax = UpperLimitCI), size = 0.2, fatten = 2) +
+  scale_x_reordered() + coord_flip() +
+  facet_grid(Category ~ ., scales = "free_y", space = "free_y") +
+  theme_minimal(base_size = 6) + scale_color_viridis_d() +
+  labs(title = "Effect Size", x = NULL, y = "Cliff's Delta") +
+  theme(legend.position = "none", strip.background = element_blank(),
+        strip.text.y = element_blank(), axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(), panel.grid.minor = element_blank())
+
+# Combine plots
+combined_plot <- p_vip + p_forest + 
+  plot_layout(widths = c(1, 1)) + 
+  plot_annotation(title = '3xTg Cecum',
+                  theme = theme(plot.title = element_text(size = 8, face = "bold")))
+
+#ggsave(plot = combined_plot, filename = "figure3c_cecum.svg", device = "svg", dpi = "retina", height = 6, width = 3)
+
+
+
+
 #########
 # 5xFAD #
 #########
 data_5xfad <- data_sample %>% dplyr::filter(SampleID %in% sample_5xfad$SampleID)
 
 # RCLR transformation
-data_5xfad_clr <- decostand(data_5xfad %>% column_to_rownames("SampleID"), method = "rclr")
+data_5xfad_clr <- decostand(data_5xfad %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA
 PCA_whole <- mixOmics::pca(data_5xfad_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -1392,7 +1502,7 @@ data_5xfad_filter <- data_5xfad %>% dplyr::filter(!(SampleID %in% sample_to_remo
   dplyr::filter(!(SampleID %in% sample_box_9$SampleID))
 
 # RCLR transformation
-data_5xfad_clr <- decostand(data_5xfad_filter %>% column_to_rownames("SampleID"), method = "rclr")
+data_5xfad_clr <- decostand(data_5xfad_filter %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA
 PCA_whole <- mixOmics::pca(data_5xfad_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -1445,7 +1555,7 @@ PLSDA_5xfad_strain_plot <- PLSDA_5xfad_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_strain <- plotLoadings(PLSDA_5xfad_strain, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_strain <- plotLoadings(PLSDA_5xfad_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_strain <- perf(PLSDA_5xfad_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -1475,7 +1585,7 @@ PLSDA_5xfad_colonized_plot <- PLSDA_5xfad_colonized_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_colonized <- plotLoadings(PLSDA_5xfad_colonized, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_colonized <- plotLoadings(PLSDA_5xfad_colonized, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_colonized <- perf(PLSDA_5xfad_colonized, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -1505,7 +1615,7 @@ PLSDA_5xfad_sex_plot <- PLSDA_5xfad_sex_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_sex <- plotLoadings(PLSDA_5xfad_sex, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_sex <- plotLoadings(PLSDA_5xfad_sex, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_sex <- perf(PLSDA_5xfad_sex, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -1544,8 +1654,8 @@ data_5xfad_spf <- data_5xfad_filter %>%
   dplyr::filter(SampleID %in% sample_spf$SampleID)
 
 # RCLR transformation
-data_5xfad_gf_clr <- decostand(data_5xfad_gf %>% column_to_rownames("SampleID"), method = "rclr")
-data_5xfad_spf_clr <- decostand(data_5xfad_spf %>% column_to_rownames("SampleID"), method = "rclr")
+data_5xfad_gf_clr <- decostand(data_5xfad_gf %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
+data_5xfad_spf_clr <- decostand(data_5xfad_spf %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA GF
 PCA_5xfad_gf <- mixOmics::pca(data_5xfad_gf_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -1618,7 +1728,7 @@ PLSDA_5xfad_gf_strain_plot <- PLSDA_5xfad_gf_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_gf_strain <- plotLoadings(PLSDA_5xfad_gf_strain, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_gf_strain <- plotLoadings(PLSDA_5xfad_gf_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_gf_strain <- perf(PLSDA_5xfad_gf_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -1648,7 +1758,7 @@ PLSDA_5xfad_spf_strain_plot <- PLSDA_5xfad_spf_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_spf_strain <- plotLoadings(PLSDA_5xfad_spf_strain, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_spf_strain <- plotLoadings(PLSDA_5xfad_spf_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_spf_strain <- perf(PLSDA_5xfad_spf_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -1712,8 +1822,8 @@ data_5xfad_wt <- data_5xfad_filter %>%
   dplyr::filter(SampleID %in% sample_wt$SampleID)
 
 # RCLR transformation
-data_5xfad_mut_clr <- decostand(data_5xfad_mut %>% column_to_rownames("SampleID"), method = "rclr")
-data_5xfad_wt_clr <- decostand(data_5xfad_wt %>% column_to_rownames("SampleID"), method = "rclr")
+data_5xfad_mut_clr <- decostand(data_5xfad_mut %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
+data_5xfad_wt_clr <- decostand(data_5xfad_wt %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA Mut
 PCA_5xfad_mut <- mixOmics::pca(data_5xfad_mut_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -1786,7 +1896,7 @@ PLSDA_5xfad_mut_colo_plot <- PLSDA_5xfad_mut_colo_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_mut_strain <- plotLoadings(PLSDA_5xfad_mut_colo, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_mut_strain <- plotLoadings(PLSDA_5xfad_mut_colo, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_mut_colonization <- perf(PLSDA_5xfad_mut_colo, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -1816,7 +1926,7 @@ PLSDA_5xfad_wt_colo_plot <- PLSDA_5xfad_wt_colo_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_wt_strain <- plotLoadings(PLSDA_5xfad_wt_colo, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_wt_strain <- plotLoadings(PLSDA_5xfad_wt_colo, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_wt_colonization <- perf(PLSDA_5xfad_wt_colo, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -1895,8 +2005,8 @@ data_5xfad_female <- data_5xfad_filter %>%
   dplyr::filter(SampleID %in% sample_female$SampleID)
 
 # RCLR transformation
-data_5xfad_male_clr <- decostand(data_5xfad_male %>% column_to_rownames("SampleID"), method = "rclr")
-data_5xfad_female_clr <- decostand(data_5xfad_female %>% column_to_rownames("SampleID"), method = "rclr")
+data_5xfad_male_clr <- decostand(data_5xfad_male %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
+data_5xfad_female_clr <- decostand(data_5xfad_female %>% column_to_rownames("SampleID"), method = "rclr", impute = FALSE) %>% replace(is.na(.), 0)
 
 # PCA Male
 PCA_5xfad_male <- mixOmics::pca(data_5xfad_male_clr %>% select_at(vars(-one_of(nearZeroVar(., names = TRUE)))),
@@ -1970,7 +2080,7 @@ PLSDA_5xfad_male_strain_plot <- PLSDA_5xfad_male_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_male_strain <- plotLoadings(PLSDA_5xfad_male_strain, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_male_strain <- plotLoadings(PLSDA_5xfad_male_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_male_strain <- perf(PLSDA_5xfad_male_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -2000,7 +2110,7 @@ PLSDA_5xfad_male_colo_plot <- PLSDA_5xfad_male_colo_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_male_colo <- plotLoadings(PLSDA_5xfad_male_colo, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_male_colo <- plotLoadings(PLSDA_5xfad_male_colo, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_male_colo <- perf(PLSDA_5xfad_male_colo, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -2030,7 +2140,7 @@ PLSDA_5xfad_female_strain_plot <- PLSDA_5xfad_female_strain_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_female_strain <- plotLoadings(PLSDA_5xfad_female_strain, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_female_strain <- plotLoadings(PLSDA_5xfad_female_strain, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_female_strain <- perf(PLSDA_5xfad_female_strain, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 
@@ -2060,7 +2170,7 @@ PLSDA_5xfad_female_colo_plot <- PLSDA_5xfad_female_colo_scores %>%
   theme(plot.title = element_text(size = 10),axis.title = element_text(size = 8),
         axis.text = element_text(size = 5)) + coord_fixed()
 
-Loadings_5xfad_female_colo <- plotLoadings(PLSDA_5xfad_female_colo, plot = FALSE, contrib = "max") %>%
+Loadings_5xfad_female_colo <- plotLoadings(PLSDA_5xfad_female_colo, plot = FALSE, contrib = "max")$X %>%
   rownames_to_column() %>% dplyr::select(rowname, GroupContrib)
 
 #perf_plsda_5xfad_female_colo <- perf(PLSDA_5xfad_female_colo, validation = "Mfold", folds = 5, nrepeat = 999, progressBar = TRUE, auc = TRUE) 

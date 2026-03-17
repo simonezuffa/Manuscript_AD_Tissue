@@ -1,4 +1,4 @@
-setwd("~/OneDrive - University of California, San Diego Health/Projects/Caltech/Manuscript_AD_Tissue")
+setwd("~/Desktop/Manuscript_AD_Tissue")
 
 library(tidyverse)
 library(ggpubr)
@@ -155,7 +155,7 @@ phylo_3xtg_ranks <- read_tsv("data/microbiome/table_plot/3xtg/3XTG_RPCA_topbot4_
 phylo_3xtg_sac_ranks_plot <- phylo_3xtg_ranks %>%
   left_join(metadata_3xtg, by = c("Sample ID" = "sample_name")) %>%
   dplyr::filter(study_type == "Sacrifice") %>%
-  dplyr::mutate(genotype = factor(genotype, levels = c("B6", "3XTG")))%>%
+  dplyr::mutate(genotype = factor(genotype, levels = c("B6", "3XTG"))) %>%
   ggboxplot(x = "genotype", y = "Current_Natural_Log_Ratio", add = "jitter", 
             add.params = list(color = "genotype", alpha = 0.7),
             title = "Log Ratio - 3xTg Sacrifice",
@@ -169,7 +169,7 @@ phylo_3xtg_sac_ranks_plot <- phylo_3xtg_ranks %>%
 # Longitudinal ratio
 phylo_3xtg_long_ranks_plot <- phylo_3xtg_ranks %>%
   left_join(metadata_3xtg, by = c("Sample ID" = "sample_name")) %>%
-  dplyr::mutate(genotype = factor(genotype, levels = c("B6", "3XTG")))%>%
+  dplyr::mutate(genotype = factor(genotype, levels = c("B6", "3XTG"))) %>%
   dplyr::mutate(host_age = as.numeric(host_age)) %>%
   dplyr::filter(study_type == "Longitudinal") %>%
   ggscatter(x = "host_age", y = "Current_Natural_Log_Ratio", add = "loess", 
@@ -200,7 +200,7 @@ phylo_5xfad_ranks <- read_tsv("data/microbiome/table_plot/5xfad/5XFAD_RPCA_Ax1_t
 phylo_5xfad_sac_ranks_plot <- phylo_5xfad_ranks %>%
   left_join(metadata_5xfad, by = c("Sample ID" = "sample_name")) %>%
   dplyr::filter(intervention == "Sacrifice") %>%
-  dplyr::mutate(mouse_strain = factor(mouse_strain, levels = c("WT 5XFAD", "Het 5XFAD")))%>%
+  dplyr::mutate(mouse_strain = factor(mouse_strain, levels = c("WT 5XFAD", "Het 5XFAD"))) %>%
   ggboxplot(x = "mouse_strain", y = "Current_Natural_Log_Ratio", add = "jitter", 
             add.params = list(color = "mouse_strain", alpha = 0.7),
             title = "Log Ratio - 5xFAD Sacrifice",
@@ -214,7 +214,7 @@ phylo_5xfad_sac_ranks_plot <- phylo_5xfad_ranks %>%
 # Longitudinal ratio
 phylo_5xfad_long_ranks_plot <- phylo_5xfad_ranks %>%
   left_join(metadata_5xfad, by = c("Sample ID" = "sample_name")) %>%
-  dplyr::mutate(mouse_strain = factor(mouse_strain, levels = c("WT 5XFAD", "Het 5XFAD")))%>%
+  dplyr::mutate(mouse_strain = factor(mouse_strain, levels = c("WT 5XFAD", "Het 5XFAD"))) %>%
   dplyr::mutate(host_age = as.numeric(host_age)) %>%
   dplyr::filter(intervention == "Longitudinal") %>%
   ggscatter(x = "host_age", y = "Current_Natural_Log_Ratio", add = "loess", 
@@ -229,7 +229,7 @@ phylo_5xfad_long_ranks_plot <- phylo_5xfad_ranks %>%
 # Linear mixed effect model
 model_5xfad <-  phylo_5xfad_ranks %>%
   left_join(metadata_5xfad, by = c("Sample ID" = "sample_name")) %>%
-  dplyr::mutate(mouse_strain = factor(mouse_strain, levels = c("WT 5XFAD", "Het 5XFAD")))%>%
+  dplyr::mutate(mouse_strain = factor(mouse_strain, levels = c("WT 5XFAD", "Het 5XFAD"))) %>%
   dplyr::mutate(host_age = as.numeric(host_age)) %>%
   dplyr::filter(intervention == "Longitudinal") %>%
   lmerTest::lmer(formula = Current_Natural_Log_Ratio ~ mouse_strain + host_age + (1|host_subject_id))

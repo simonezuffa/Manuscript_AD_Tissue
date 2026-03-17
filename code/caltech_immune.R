@@ -2,7 +2,7 @@
 # To be run after caltech_serum.R #
 ###################################
 
-setwd("~/OneDrive - University of California, San Diego Health/Projects/Caltech/Manuscript_AD_Tissue")
+setwd("~/Desktop/Manuscript_AD_Tissue")
 
 # Check carnitines of interest
 # 2821 - 266.137
@@ -10,9 +10,9 @@ setwd("~/OneDrive - University of California, San Diego Health/Projects/Caltech/
 # 4173 - 294.169
 
 car_int <- data_frame(SampleID = c(data_3xtg$SampleID),
-                      Carnitine1 = c(data_3xtg$`3078`),
-                      Carnitine2 = c(data_3xtg$`4173`),
-                      Carnitine3 = c(data_3xtg$`2821`)) %>%
+                      Carnitine2 = c(data_3xtg$`3078`),
+                      Carnitine3 = c(data_3xtg$`4173`),
+                      Carnitine1 = c(data_3xtg$`2821`)) %>%
   dplyr::mutate(LogCarn1 = log(Carnitine1 + 1)) %>% 
   dplyr::mutate(LogCarn2 = log(Carnitine2 + 1)) %>%
   dplyr::mutate(LogCarn3 = log(Carnitine3 + 1)) %>%
@@ -132,3 +132,21 @@ summary(model6)
 combined_plots <- ggarrange(il17_car_plot, cells_car_plot)
 
 #ggsave(plot = combined_plots, filename = "immune_plot.svg", device = "svg", dpi = "retina", height = 2, width = 4.5)
+
+
+# Check difference between SPF and GF animals
+
+immune_3xtg <- immune_il17 %>% 
+  dplyr::mutate(Genotype = tolower(Genotype)) %>%
+  dplyr::filter(str_detect(pattern = regex("3xTG", ignore_case = TRUE), Genotype)) %>%
+  dplyr::filter(Tissue == "MLN") %>%
+  ggboxplot(x = "Genotype", y = "IL17A", add = "jitter") + stat_compare_means()
+
+immune_model <- immune_il17 %>% 
+  dplyr::mutate(Genotype = tolower(Genotype)) %>%
+  dplyr::filter(str_detect(pattern = regex("3xTG", ignore_case = TRUE), Genotype)) %>%
+  dplyr::filter(Tissue == "MLN") %>%
+  lm(formula = IL17A ~ Genotype + Sex)
+
+summary(immune_model)
+  
